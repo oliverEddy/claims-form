@@ -1,6 +1,66 @@
+body {
+  font-family: Fira Sans;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #444444;
+}
+
 .heading {
-    text-align: center;
-    font-family: Fira Sans;
-    font-weight: bold;
-    font-size: 1.5rem
+  text-align: center;
+  font-family: Fira Sans;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #444444;
+}
+
+.form-container {
+  margin: 1.5rem auto;
+  border: 2px solid #f43300;
+  padding: 1rem;
+  width: 80%;
+  max-width: 32rem; /* Or whatever width you prefer */
+  align-items: center;
+}
+
+.form-group {
+  padding-bottom: 0.5rem;
+}
+
+label {
+  width: max-content;
+}
+
+input {
+  margin-top: 0.1rem;
+  font-family: Fira Sans;
+  font-size: 0.7rem;
+  width: 100%;
+  padding: 0.2rem;
+}
+
+.date-picker {
+  margin-bottom: 0.6rem;
+}
+
+.consent-statement {
+  color: #898989;
+  font-size: 0.6rem;
+}
+
+.btn-success {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #c91500;
+  border-color: #c91500;
+  margin: 0.5rem auto;
+  padding: 0.2rem;
+  font-weight: bold;
+}
+
+textarea {
+  font-size: 0.7rem;
+  font-family: Fira Sans;
+  width: 100%;
 }

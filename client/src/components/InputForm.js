@@ -45,25 +45,25 @@ const InputForm = () => {
 
   return (
     <>
-      <h1 className="text-center mt-5">Form</h1>
-      <div className="d-flex mt-5">
+      <h1 className="heading">Claims Form</h1>
+      <div className="form-container">
         <form>
           {/* create a form that has label and input fields for policyNumber, customerIdNumber, condition, firstSymptoms, symptomDetails, serviceType, providerFacility, alternativeHealthInsurance, consentStatement, calimsStatus*/}
 
           <div className="form-group">
-            <label htmlFor="policyNumber">Policy Number</label>
+            <label htmlFor="policyNumber">Policy Number:</label>
             <input
               type="text"
               className="form-control"
               id="policyNumber"
-              placeholder="Enter policy number"
+              placeholder="00000000"
               value={policyNumber}
               onChange={(e) => setPolicyNumber(e.target.value)}
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="customerIdNumber">Customer ID Number</label>
+            <label htmlFor="customerIdNumber">Customer ID Number:</label>
             <input
               type="text"
               className="form-control"
@@ -74,19 +74,19 @@ const InputForm = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="condition">Condition</label>
+            <label htmlFor="condition">Condition:</label>
             <input
               type="text"
               className="form-control"
               id="condition"
-              placeholder="Enter condition"
+              placeholder="eg. Fracture"
               onChange={(e) => setCondition(e.target.value)}
             />
           </div>
 
           <div>
             <label htmlFor="description" className="form-name">
-              First Symptoms:
+              Date of First Symptoms:
             </label>
             <DatePicker
               className="form-input date-picker"
@@ -94,46 +94,47 @@ const InputForm = () => {
               dateFormat="dd/MM/yyyy"
               selected={firstSymptoms}
               onChange={(date) => setFirstSymptoms(date)}
-              placeholderText="Select date you first noticed any symptoms"
+              placeholderText="select date"
             />
           </div>
 
           <div className="form-group">
             <label htmlFor="firstSymptoms">Symptom details:</label>
-            <input
+            <textarea
               type="text"
               className="form-control"
               id="firstSymptoms"
-              placeholder="Enter first symptoms"
+              placeholder="e.g. unable to bear weight"
               onChange={(e) => setSymptomDetails(e.target.value)}
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="serviceType">Service Type</label>
+            <label htmlFor="serviceType">Type of Medical Service:</label>
             <input
               type="text"
               className="form-control"
               id="serviceType"
-              placeholder="Enter service type"
+              placeholder="e.g. x-ray"
               onChange={(e) => setServiceType(e.target.value)}
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="providerFacility">Provider Facility</label>
+            <label htmlFor="providerFacility">Provider Facility:</label>
             <input
               type="text"
               className="form-control"
               id="providerFacility"
-              placeholder="Enter provider facility"
+              placeholder="e.g. Pacific Radiology, Grey Lynn"
               onChange={(e) => setProviderFacility(e.target.value)}
             />
           </div>
 
           <div className="form-group">
             <label htmlFor="alternativeHealthInsurance">
-              Alternative Health Insurance
+              Do you have a policy with another health provider that you can
+              make this claim with?
             </label>
             <select
               className="form-input"
@@ -150,7 +151,21 @@ const InputForm = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="consentStatement">Consent Statement</label>
+            <label htmlFor="consentStatement">
+              Consent Statement:{" "}
+              <div className="consent-statement">
+                "As part of an insurance claim with enSURE, I consent and give
+                authority to enSURE and any of its related entities and agents
+                to collect, use and disclose, any medical, financial or other
+                personal information about the life assured for the purposes of
+                assessing and managing the insurance claim. I declare that all
+                medical information pertaining to me and relevant to my
+                insurance claim has been provided and disclosed to enSURE, and
+                understand that making any false or fraudulent claim could
+                result in cancellation of my policy and/or oblige me to repay
+                any claims."
+              </div>
+            </label>
             <select
               className="form-input"
               name="consentStatement"
@@ -165,8 +180,6 @@ const InputForm = () => {
             </select>
           </div>
         </form>
-      </div>
-      <div>
         <button className="btn btn-success" onClick={onSubmit}>
           Submit your claim
         </button>
