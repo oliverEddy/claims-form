@@ -83,7 +83,7 @@ const description = {
 
 
         <div className="form-group">
-          <label for="firstSymptoms">First Symptoms</label>
+          <label for="firstSymptoms">Symptom details:</label>
           <input type="text" className="form-control" id="firstSymptoms" placeholder="Enter first symptoms" onChange={(e) => setSymptomDetails(e.target.value)}/>
         </div>
 
