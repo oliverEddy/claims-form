@@ -46,7 +46,8 @@ const description = {
   };
 
   return (
-    <Fragment>
+    <>
+    
       <h1 className="text-center mt-5">Form</h1>
         <div className="d-flex mt-5">
 <form>
@@ -124,14 +125,14 @@ const description = {
 </form>
 
 </div>
-      
+      <div>
         <button className="btn btn-success" onClick={onSubmit}>
           Submit your claim
         </button>
       </div>
 
 
-    </Fragment>
+    
 
     </>
 
