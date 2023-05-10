@@ -1,5 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "./App.css";
+import logo from "./ensure-logo.svg";
 
 //components
 
@@ -7,11 +8,12 @@ import InputForm from "./components/InputForm";
 
 function App() {
   return (
-    <Fragment>
+    <>
       <div className="container">
+        <img className="logo-img" src={logo} alt="ensure logo" />
         <InputForm />
       </div>
-    </Fragment>
+    </>
   );
 }
 

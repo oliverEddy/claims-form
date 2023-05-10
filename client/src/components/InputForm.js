@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
+import "./InputForm.css";
 
 
 const InputForm = () => {
@@ -121,22 +121,20 @@ const description = {
   </div>
 
 
-
-
-
 </form>
 
-        
-
-
 </div>
-      <div>
+      
         <button className="btn btn-success" onClick={onSubmit}>
           Submit your claim
         </button>
       </div>
 
+
     </Fragment>
+
+    </>
+
   );
 };
 
