@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import "./InputForm.css";
 
 const InputForm = () => {
   const [description, setDescription] = useState("");
@@ -20,8 +21,8 @@ const InputForm = () => {
   };
 
   return (
-    <Fragment>
-      <h1 className="text-center mt-5">Form</h1>
+    <>
+      <h1 className="heading">ClaimsForm</h1>
       <div className="d-flex mt-5">
         <input
           type="text"
@@ -33,7 +34,7 @@ const InputForm = () => {
           Add
         </button>
       </div>
-    </Fragment>
+    </>
   );
 };
 
