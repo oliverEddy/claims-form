@@ -14,6 +14,7 @@ function App() {
       <LogInButton />
     </div>
       <div className="container">
+        
         <img className="logo-img" src={logo} alt="ensure logo" />
         <InputForm />
       </div>

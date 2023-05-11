@@ -1,20 +1,15 @@
 const express = require("express");
 const pool = require("../db");
-const { auth } = require('express-oauth2-jwt-bearer');
+// const { auth } = require('express-oauth2-jwt-bearer');
 const formRouter = express.Router();
 
 
-const jwtCheck = auth({
-    audience: 'https://ensure-api.com',
-    issuerBaseURL: 'https://dev-8a2dkllk1a5kywvs.us.auth0.com/',
-    tokenSigningAlg: 'RS256'
-  });
+// const jwtCheck = auth({
+//     audience: 'https://ensure-api.com',
+//     issuerBaseURL: 'https://dev-8a2dkllk1a5kywvs.us.auth0.com/',
+//     tokenSigningAlg: 'RS256'
+//   });
 
-
-  app.use(jwtCheck);
-
-
-  
 formRouter.get("/", async (req, res) => {
     console.log('hot reloaded!')
     try {
@@ -25,7 +20,9 @@ formRouter.get("/", async (req, res) => {
     }
 });
 
-formRouter.post("/", async (req, res) => {
+formRouter.post("/", 
+// jwtCheck,
+  async (req, res) => {
     try {
         const { policyNumber, customerIdNumber, condition, firstSymptoms, symptomDetails, serviceType, providerFacility, alternativeHealthInsurance, consentStatement } = req.body;
         const newForm = await pool.query(
