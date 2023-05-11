@@ -26,15 +26,18 @@ const InputForm = () => {
     alternativeHealthInsurance: alternativeHealthInsurance,
     consentStatement: consentStatement,
   };
+  
+  console.log(description)
 
-  const onSubmit = async () => {
+
+  const onSubmit = async (e) => {
+    
     try {
-      const body = { description };
-
-      await fetch(`${process.env.REACT_APP_API_URL}/form`, {
+      
+      await fetch("http://localhost:5001/api/form", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
+        body: JSON.stringify(description),
       });
 
       window.location = "/";
