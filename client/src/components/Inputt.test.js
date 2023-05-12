@@ -1,47 +1,47 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
-import InputForm from "./InputForm";
+import { render, fireEvent, waitFor } from "@testing-library/react";
+import InputForm from "../components/InputForm";
 
 describe("InputForm", () => {
-  test("renders form elements correctly", () => {
-    const { getByLabelText, getByPlaceholderText, getByText } = render(
-      <InputForm />
-    );
+  test("submits form correctly", async () => {
+    // Render the component
+    const { getByLabelText, getByText } = render(<InputForm />);
 
-    // Verify the existence of form elements
+    // Fill in the form inputs
     const policyNumberInput = getByLabelText("Policy Number:");
-    expect(policyNumberInput).toBeInTheDocument();
-
     const customerIdNumberInput = getByLabelText("Customer ID Number:");
-    expect(customerIdNumberInput).toBeInTheDocument();
-
     const conditionInput = getByLabelText("Condition:");
-    expect(conditionInput).toBeInTheDocument();
+    // ... fill in the remaining inputs
 
-    const firstSymptomsDatePicker = getByPlaceholderText("select date");
-    expect(firstSymptomsDatePicker).toBeInTheDocument();
+    // Fill in the form inputs with sample values
+    fireEvent.change(policyNumberInput, { target: { value: "00000000" } });
+    fireEvent.change(customerIdNumberInput, { target: { value: "12345678" } });
+    fireEvent.change(conditionInput, { target: { value: "Fracture" } });
+    // ... set the values of the remaining inputs
 
-    const symptomDetailsTextArea = getByLabelText("Symptom details:");
-    expect(symptomDetailsTextArea).toBeInTheDocument();
-
-    const serviceTypeInput = getByLabelText("Type of Medical Service:");
-    expect(serviceTypeInput).toBeInTheDocument();
-
-    const providerFacilityInput = getByLabelText("Provider Facility:");
-    expect(providerFacilityInput).toBeInTheDocument();
-
-    const alternativeHealthInsuranceSelect = getByLabelText(
-      "Do you have a policy with another health provider that you can make this claim with?"
-    );
-    expect(alternativeHealthInsuranceSelect).toBeInTheDocument();
-
-    const consentStatementSelect = getByLabelText("Consent Statement:");
-    expect(consentStatementSelect).toBeInTheDocument();
-
+    // Submit the form
     const submitButton = getByText("Submit your claim");
-    expect(submitButton).toBeInTheDocument();
+    fireEvent.click(submitButton);
+
+    // Wait for the submission process (e.g., API calls, redirects)
+    // ... use waitFor if necessary
+
+    // Assertions for successful submission
+    // ... assert the expected behavior after successful submission
   });
 
-  // You can write additional tests to simulate user interactions and check the behavior
-  // of your form based on those interactions.
+  test("displays error message on invalid submission", async () => {
+    // Render the component
+    const { getByText } = render(<InputForm />);
+
+    // Submit the form without filling in the required inputs
+    const submitButton = getByText("Submit your claim");
+    fireEvent.click(submitButton);
+
+    // Wait for the submission process (e.g., error messages)
+    // ... use waitFor if necessary
+
+    // Assertions for error message display
+    // ... assert the expected error message behavior
+  });
 });

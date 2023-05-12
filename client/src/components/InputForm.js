@@ -151,13 +151,12 @@ const InputForm = () => {
               Do you have a policy with another health provider that you can
               make this claim with?
             </label>
+
             <select
+              id="alternativeHealthInsurance"
               className="form-input"
               name="alternativeHealthInsurance"
-              required
-              onChange={(event) => {
-                setAlternativeHealthInsurance(event.target.value);
-              }}
+              required=""
             >
               <option value="">Select</option>
               <option value="True">Yes</option>
