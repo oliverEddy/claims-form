@@ -29,24 +29,23 @@ const InputForm = () => {
     consentStatement: consentStatement,
   };
 
-
   const onSubmit = async (e) => {
     // const accessToken = await getAccessTokenSilently();
     e.preventDefault();
     try {
-      
-      await fetch("http://localhost:5001/api/claims", {
-        method: "POST",
-        headers: { 
-          "Content-Type": "application/json",
-        // Authorization: `Bearer ${accessToken}` 
-      },
-        
-        body: JSON.stringify(description),
-      }, []
-      );
+      await fetch(
+        "http://localhost:5001/api/claims",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            // Authorization: `Bearer ${accessToken}`
+          },
 
-      
+          body: JSON.stringify(description),
+        },
+        []
+      );
     } catch (err) {
       console.error(err.message);
     }
@@ -68,6 +67,7 @@ const InputForm = () => {
               placeholder="00000000"
               value={policyNumber}
               onChange={(e) => setPolicyNumber(e.target.value)}
+              required
             />
           </div>
 
@@ -79,6 +79,7 @@ const InputForm = () => {
               id="customerIdNumber"
               placeholder="Enter customer ID number"
               onChange={(e) => setCustomerIdNumber(e.target.value)}
+              required
             />
           </div>
 
@@ -90,6 +91,7 @@ const InputForm = () => {
               id="condition"
               placeholder="eg. Fracture"
               onChange={(e) => setCondition(e.target.value)}
+              required
             />
           </div>
 
@@ -104,6 +106,7 @@ const InputForm = () => {
               selected={firstSymptoms}
               onChange={(date) => setFirstSymptoms(date)}
               placeholderText="select date"
+              required
             />
           </div>
 
@@ -115,6 +118,7 @@ const InputForm = () => {
               id="firstSymptoms"
               placeholder="e.g. unable to bear weight"
               onChange={(e) => setSymptomDetails(e.target.value)}
+              required
             />
           </div>
 
@@ -126,6 +130,7 @@ const InputForm = () => {
               id="serviceType"
               placeholder="e.g. x-ray"
               onChange={(e) => setServiceType(e.target.value)}
+              required
             />
           </div>
 
@@ -137,6 +142,7 @@ const InputForm = () => {
               id="providerFacility"
               placeholder="e.g. Pacific Radiology, Grey Lynn"
               onChange={(e) => setProviderFacility(e.target.value)}
+              required
             />
           </div>
 
