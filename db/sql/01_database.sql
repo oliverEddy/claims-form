@@ -40,5 +40,5 @@ CREATE TABLE claims(
   alternativeHealthInsurance BOOLEAN NOT NULL,
   consentStatement BOOLEAN NOT NULL,
   claimStatus claim_status DEFAULT 'submitted' NOT NULL 
-  CHECK (policyNumber IS NOT NULL AND consentStatement = 't')
+  -- CHECK (policyNumber IS NOT NULL AND consentStatement = 't')
  );
