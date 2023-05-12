@@ -10,27 +10,13 @@ const formRouter = express.Router();
 //     tokenSigningAlg: 'RS256'
 //   });
 
+
+
 formRouter.get("/", async (req, res) => {
     console.log('hot reloaded!')
     try {
         const allItems = await pool.query("SELECT * FROM form");
         res.json(allItems.rows);
-    } catch (err) {
-        console.error(err.message);
-    }
-});
-
-formRouter.post("/", 
-// jwtCheck,
-  async (req, res) => {
-    try {
-        const { policyNumber, customerIdNumber, condition, firstSymptoms, symptomDetails, serviceType, providerFacility, alternativeHealthInsurance, consentStatement } = req.body;
-        const newForm = await pool.query(
-            "INSERT INTO form (policyNumber, customerIdNumber, condition, firstSymptoms, symptomDetails, serviceType, providerFacility, alternativeHealthInsurance, consentStatement) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *",
-            [policyNumber, customerIdNumber, condition, firstSymptoms, symptomDetails, serviceType, providerFacility, alternativeHealthInsurance, consentStatement]
-        );
-
-        res.json(newForm.rows[0]);
     } catch (err) {
         console.error(err.message);
     }

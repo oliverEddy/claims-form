@@ -28,16 +28,14 @@ const InputForm = () => {
     alternativeHealthInsurance: alternativeHealthInsurance,
     consentStatement: consentStatement,
   };
-  
-  console.log(description)
 
 
   const onSubmit = async (e) => {
     // const accessToken = await getAccessTokenSilently();
-    
+    e.preventDefault();
     try {
       
-      await fetch("http://localhost:5001/api/form", {
+      await fetch("http://localhost:5001/api/claims", {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
@@ -48,7 +46,7 @@ const InputForm = () => {
       }, []
       );
 
-      window.location = "/";
+      
     } catch (err) {
       console.error(err.message);
     }
