@@ -4,3 +4,9 @@
   display: block;
 }
 
+/* Media query for desktop */
+@media screen and (min-width: 55rem) {
+  .logo-img {
+    width: 10%;
+  }
+}

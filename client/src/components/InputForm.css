@@ -1,8 +1,5 @@
 body {
   font-family: Fira Sans;
-  font-size: 0.7rem;
-  font-weight: bold;
-  color: #444444;
 }
 
 .heading {
@@ -28,6 +25,9 @@ body {
 
 label {
   width: max-content;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #444444;
 }
 
 input {
@@ -59,8 +59,42 @@ input {
   font-weight: bold;
 }
 
+.btn-success:hover {
+  background-color: #ff4d00;
+  transition: 0.7s;
+}
+
+.button:focus {
+  outline-color: transparent;
+  outline-style: solid;
+  box-shadow: 0 0 0 4px #444444;
+}
+
 textarea {
   font-size: 0.7rem;
   font-family: Fira Sans;
   width: 100%;
+}
+
+/* Media query for desktop */
+@media screen and (min-width: 55rem) {
+  label {
+    font-size: 1rem;
+  }
+
+  textarea {
+    font-size: 1rem;
+  }
+
+  .consent-statement {
+    font-size: 0.8rem;
+  }
+
+  .btn-success {
+    padding: 0.4rem;
+  }
+
+  input {
+    font-size: 1rem;
+  }
 }
