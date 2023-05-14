@@ -156,7 +156,10 @@ const InputForm = () => {
               id="alternativeHealthInsurance"
               className="form-input"
               name="alternativeHealthInsurance"
-              required=""
+              required
+              onChange={(event) => {
+                setAlternativeHealthInsurance(event.target.value);
+              }}
             >
               <option value="">Select</option>
               <option value="True">Yes</option>
