@@ -151,9 +151,7 @@ const InputForm = () => {
               Do you have a policy with another health provider that you can
               make this claim with?
             </label>
-
             <select
-              id="alternativeHealthInsurance"
               className="form-input"
               name="alternativeHealthInsurance"
               required
