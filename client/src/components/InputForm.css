@@ -93,4 +93,8 @@ textarea {
   .btn-success {
     padding: 0.4rem;
   }
+
+  input {
+    font-size: 1rem;
+  }
 }
