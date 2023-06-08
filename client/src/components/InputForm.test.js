@@ -1,5 +1,7 @@
 import React from "react";
 import { render, fireEvent, waitFor } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
+
 import InputForm from "../components/InputForm";
 
 describe("InputForm", () => {
@@ -43,5 +45,10 @@ describe("InputForm", () => {
 
     // Assertions for error message display
     // ... assert the expected error message behavior
+  });
+  test("renders the title", () => {
+    const { getByText } = render(<InputForm />);
+    const titleElement = getByText("Claims Form");
+    expect(titleElement).toBeInTheDocument();
   });
 });
