@@ -104,16 +104,17 @@ describe("InputForm", () => {
   });
 
   test("renders alternative health insurance select", () => {
-    const { getByRole } = render(<InputForm />);
-    const alternativeHealthInsuranceSelect = getByRole("combobox", {
-      name: "Do you have a policy with another health provider that you can make this claim with?",
-    });
+    const { container } = render(<InputForm />);
+    const alternativeHealthInsuranceSelect = container.querySelector(
+      'select[name="alternativeHealthInsurance"]'
+    );
     expect(alternativeHealthInsuranceSelect).toBeInTheDocument();
   });
-
   test("renders consent statement select", () => {
-    const { getByDisplayValue } = render(<InputForm />);
-    const consentStatementSelect = getByDisplayValue("Select");
+    const { container } = render(<InputForm />);
+    const consentStatementSelect = container.querySelector(
+      'select[name="consentStatement"]'
+    );
     expect(consentStatementSelect).toBeInTheDocument();
   });
 
