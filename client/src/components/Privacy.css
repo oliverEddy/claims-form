@@ -1,0 +1,24 @@
+.privacy-heading {
+    font-size: 1.2rem;
+    text-align: center;
+
+}
+
+.privacy-para {
+    max-width: 70%;
+    margin: 2rem auto;
+    font-size: 1rem;
+}
+
+
+/*  Media query for tablet  */
+@media screen and (min-width: 30rem) {
+    .privacy-heading {
+        font-size: 2rem;
+    }
+
+    .privacy-para {
+        font-size: 1.5rem;
+        max-width: 60%;
+    }
+}

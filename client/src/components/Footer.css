@@ -1,0 +1,51 @@
+.footer {
+  min-height: 1rem;
+  width: 100%;
+  background-color: rgb(255, 77, 0, 0.2);
+  display: grid;
+  grid-template-columns: 1.3fr 2fr 1.5fr;
+  /* align-self: flex-end; */
+  position: absolute;
+  bottom: 0;
+}
+
+.footerItem {
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  margin: 1rem;
+  margin-top: 0;
+  color: black;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.copyright {
+  font-size: 0.8rem;
+  align-self: center;
+  grid-column: 1;
+}
+
+.footer-address {
+  font-size: 0.8rem;
+  grid-column: 2;
+  padding-left: 1rem;
+  text-align: center;
+}
+
+.footer-privacy {
+  grid-column: 3;
+  text-align: right;
+  font-size: 0.8rem;
+  align-self: center;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+/*  Media query for tablet  */
+@media screen and (min-width: 30rem) {
+  .footerItem {
+    font-size: 1rem;
+  }
+}

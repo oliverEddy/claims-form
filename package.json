@@ -13,5 +13,8 @@
   "repository": {
     "type": "git",
     "private": "true"
+  },
+  "dependencies": {
+    "react-router-dom": "^6.12.1"
   }
 }
