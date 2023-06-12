@@ -6,7 +6,7 @@
   grid-template-columns: 1.3fr 2fr 1.5fr;
   /* align-self: flex-end; */
   position: absolute;
-  bottom: 0;
+
 }
 
 .footerItem {
@@ -45,7 +45,11 @@ a:link {
 
 /*  Media query for tablet  */
 @media screen and (min-width: 30rem) {
-  .footerItem {
+  .footer {
+    bottom: 0;
+  }
+  
+    .footerItem {
     font-size: 1rem;
   }
 }

@@ -4,7 +4,6 @@ const Privacy = () => {
   return (
     <>
       <h1 className="privacy-heading">Privacy Policy</h1>;
-      <body>
         <div className="privacy-para">
           <p>
             We collect personal information from you, including information
@@ -30,7 +29,6 @@ const Privacy = () => {
             151 Ponsonby Road, Auckland.
           </p>
         </div>
-      </body>
     </>
   );
 };
