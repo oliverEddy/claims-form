@@ -2,10 +2,8 @@ const express = require("express");
 const pool = require("../db");
 // const { auth } = require('express-oauth2-jwt-bearer');
 const claimsRouter = express.Router();
-const cors = require("cors");
 const claimsRepository = require("./claims.repository");
 
-claimsRouter.use(cors());
 
 
 
@@ -85,6 +83,7 @@ claimsRouter.get(
     }
   }
 );
+
 
 
 module.exports = claimsRouter;

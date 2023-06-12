@@ -18,7 +18,7 @@ module.exports = {
 
       
 
-      return claim.rows;
+      return newClaim.rows;
     } catch (err) {
       throw new Error(err);
     }
