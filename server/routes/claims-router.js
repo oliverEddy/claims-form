@@ -2,19 +2,18 @@ const express = require("express");
 const pool = require("../db");
 // const { auth } = require('express-oauth2-jwt-bearer');
 const claimsRouter = express.Router();
+const cors = require("cors");
+const claimsRepository = require("./claims.repository");
 
-// const jwtCheck = auth({
-//     audience: 'https://ensure-api.com',
-//     issuerBaseURL: 'https://dev-8a2dkllk1a5kywvs.us.auth0.com/',
-//     tokenSigningAlg: 'RS256'
-//   });
+claimsRouter.use(cors());
+
+
 
 claimsRouter.post(
   "/",
   // jwtCheck,
   async (req, res) => {
-    try {
-      const {
+     const {
         policyNumber,
         customerIdNumber,
         condition,
@@ -25,21 +24,11 @@ claimsRouter.post(
         alternativeHealthInsurance,
         consentStatement,
       } = req.body;
-      const newForm = await pool.query(
-        "INSERT INTO claims (policyNumber, customerIdNumber, condition, firstSymptoms, symptomDetails, serviceType, providerFacility, alternativeHealthInsurance, consentStatement) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *",
-        [
-          policyNumber,
-          customerIdNumber,
-          condition,
-          firstSymptoms,
-          symptomDetails,
-          serviceType,
-          providerFacility,
-          alternativeHealthInsurance,
-          consentStatement,
-        ]
-      );
-      res.status(201).json(newForm.rows[0]);
+
+    
+    try {
+      const newForm = await claimsRepository.createClaim(req.body);
+      res.status(201).send(newForm.rows[0]);
       console.info({
           datetime: new Date(),
           event: `${req.method} /claims`,
@@ -52,5 +41,50 @@ claimsRouter.post(
     }
   }
 );
+
+
+
+claimsRouter.get(
+  "/",
+  // jwtCheck,
+  async (req, res) => {
+    try {
+      const getAllClaims = await claimsRepository.getAllClaims();
+      res.send(getAllClaims).status(200);
+      console.info({
+          datetime: new Date(),
+          event: `${req.method} /claims`,
+        });
+    } catch (err) {
+        err.status = 404;
+        err.message = "You have entered incorrect details";
+      //   alert(err.message);
+    }
+  }
+);
+
+
+
+claimsRouter.get(
+  "/:id",
+  // jwtCheck,
+  async (req, res) => {
+    id = req.params.id;
+    try {
+      const getSingleClaim = await claimsRepository.getSingleClaim("SELECT * FROM claims WHERE claimid = $1", [id]);
+      res.send(getSingleClaim).status(200);
+      
+      console.info({
+          datetime: new Date(),
+          event: `${req.method} /claims/:id`,
+        });
+    } catch (err) {
+        err.status = 404;
+        err.message = "You have entered incorrect details";
+      //   alert(err.message);
+    }
+  }
+);
+
 
 module.exports = claimsRouter;

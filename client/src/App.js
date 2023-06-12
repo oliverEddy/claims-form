@@ -10,6 +10,7 @@ import logo from "./ensure-logo.svg";
 import InputForm from "./components/InputForm";
 import Footer from "./components/Footer";
 import Privacy from "./components/Privacy";
+import Claims from "./components/Claims";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <img className="logo-img" src={logo} alt="ensure logo" />
         <Routes>
           <Route exact path="/privacy-policy" element={<Privacy />}></Route>
+          <Route exact path="/claims/:id" element={<Claims />}></Route>
           <Route exact path="/claims-form" element={<InputForm />}></Route>
         </Routes>
         <Footer />
