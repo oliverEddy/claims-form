@@ -8,10 +8,15 @@ const claimsRouter = require("./routes/claims-router");
 app.use(cors());
 app.use(express.json());
 
-// app.use("/api/form", formRouter);
 app.use("/api/claims", claimsRouter);
 
-const thePort = process.env.EXPRESS_PORT || 5000;
+app.use("/test", (req, res) => {
+  res.json("Hello World");
+});
+
+
+
+const thePort = process.env.EXPRESS_PORT || 5001;
 app.listen(thePort, () => {
   console.log(`server has started on port ${thePort}`);
 });
