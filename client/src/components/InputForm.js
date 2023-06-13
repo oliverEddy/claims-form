@@ -176,7 +176,7 @@ const InputForm = () => {
           </div>
 
           <div>
-            <label className="label" htmlFor="consentStatement">
+            <label className="label-statement" htmlFor="consentStatement">
               Consent Statement:{" "}
               <div className="consent-statement">
                 "As part of an insurance claim with enSURE, I consent and give

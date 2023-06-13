@@ -33,8 +33,16 @@ p {
 }
 
 .label-statement {
-  color: #f43300;
-  max-width: 10rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  display: inline-block;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 0.8rem;
+  margin-bottom: 1.2rem;
 }
 
 .select-statement {
@@ -60,6 +68,7 @@ input {
   width: 100%;
   padding: 0.5rem;
 }
+
 .textarea {
   margin-top: 0.8rem;
   margin-bottom: 1.2rem;
@@ -70,12 +79,14 @@ input {
 }
 
 .date-picker {
-  margin-bottom: 0.6rem;
+  margin-top: 0.8rem;
+  margin-bottom: 1.2rem;
 }
 
 .consent-statement {
   color: #595857;
   font-size: 0.6rem;
+  margin-top: 0.8rem;
 }
 
 .btn-success {
