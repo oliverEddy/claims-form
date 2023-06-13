@@ -34,7 +34,22 @@ p {
 
 .label-statement {
   color: #f43300;
-  width: 80%;
+  max-width: 10rem;
+}
+
+.select-statement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #f43300;
+  border-radius: 1rem;
+  border: #000000;
+  margin: 0.5rem auto;
+  padding: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-weight: bold;
 }
 
 input {

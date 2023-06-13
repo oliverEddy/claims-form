@@ -162,7 +162,7 @@ const InputForm = () => {
               make this claim with?
             </label>
             <select
-              className="form-input"
+              className="select-statement"
               name="alternativeHealthInsurance"
               required
               onChange={(event) => {
@@ -192,7 +192,7 @@ const InputForm = () => {
               </div>
             </label>
             <select
-              className="form-input"
+              className="select-statement"
               name="consentStatement"
               required
               onChange={(event) => {
