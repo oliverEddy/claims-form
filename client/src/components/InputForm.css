@@ -26,23 +26,32 @@ p {
   font-weight: 300; /* Set the font weight to 300 (light) for the form container */
 }
 
-.form-group {
-  padding-bottom: 0.5rem;
+.label {
+  width: max-content;
+  font-size: 1rem;
+  padding-bottom: 1rem;
 }
 
-label {
-  width: max-content;
-  font-size: 0.7rem;
-
-  color: #000000;
+.label-statement {
+  color: #f43300;
+  width: 80%;
 }
 
 input {
-  margin-top: 0.1rem;
+  margin-top: 0.8rem;
+  margin-bottom: 1.2rem;
   font-family: Fira Sans;
-  font-size: 0.7rem;
+
   width: 100%;
-  padding: 0.2rem;
+  padding: 0.5rem;
+}
+.textarea {
+  margin-top: 0.8rem;
+  margin-bottom: 1.2rem;
+  font-family: Fira Sans;
+
+  width: 100%;
+  padding: 0.5rem;
 }
 
 .date-picker {
@@ -80,27 +89,6 @@ input {
   box-shadow: 0 0 0 4px #444444;
 }
 
-textarea {
-  font-size: 0.7rem;
-  font-family: Fira Sans;
-  width: 100%;
-}
-
 /* Media query for desktop */
 @media screen and (min-width: 55rem) {
-  label {
-    font-size: 1rem;
-  }
-
-  textarea {
-    font-size: 1rem;
-  }
-
-  .consent-statement {
-    font-size: 0.8rem;
-  }
-
-  input {
-    font-size: 1rem;
-  }
 }
