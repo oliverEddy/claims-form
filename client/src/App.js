@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import Privacy from "./components/Privacy";
 import Homepage from "./components/Homepage";
 import Claims from "./components/Claims";
+import Claim from "./components/Claim";
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
         <Routes>
         <Route exact path="/" element={<Homepage />} />
           <Route exact path="/privacy-policy" element={<Privacy />}></Route>
-          <Route exact path="/claims/:id" element={<Claims />}></Route>
+          <Route exact path="/claims" element={<Claims />}></Route>
+          <Route exact path="/claims/:id" element={<Claim />}></Route>
           <Route exact path="/claims-form" element={<InputForm />}></Route>
         </Routes>
         <Footer />
