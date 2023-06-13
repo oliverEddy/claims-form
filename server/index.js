@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/claims", claimsRouter);
-app.use("api/claimants", claimantRouter);
+// app.use("/api/claimants", claimantRouter);
 
 app.use("/test", (req, res) => {
   res.json("Hello World");

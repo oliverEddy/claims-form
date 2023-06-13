@@ -11,7 +11,7 @@ claimantRouter.get(
   // jwtCheck,
   async (req, res) => {
     try {
-      const getAllClaimants = await claimantRepoantsitory.getAllClaimants();
+      const getAllClaimants = await claimantRepository.getAllClaimants();
       res.send(getAllClaimants).status(200);
       console.info({
           datetime: new Date(),

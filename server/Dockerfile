@@ -8,7 +8,7 @@ COPY . /app
 # run these commands
 RUN ["npm", "install"]
 # expose a port
-EXPOSE 5000
+EXPOSE 5001
 # run this command at entrypoint/on start
 ENTRYPOINT ["npm", "run", "start:dev"]
 

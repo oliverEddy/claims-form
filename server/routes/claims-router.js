@@ -62,14 +62,39 @@ claimsRouter.get(
 );
 
 
+claimsRouter.get(
+  "/all",
+  // jwtCheck,
+  async (req, res) => {
+    try {
+      const getAllClaims = await pool.query("SELECT * FROM claims");
+      res.send(getAllClaims).status(200);
+      res.json("Hello World")
+      console.info({
+          datetime: new Date(),
+          event: `${req.method} /claims`,
+        });
+    } catch (err) {
+        err.status = 404;
+        err.message = "You have entered incorrect details";
+      //   alert(err.message);
+    }
+  }
+);
+
+
+
+
+
+
+
 
 claimsRouter.get(
   "/:id",
   // jwtCheck,
   async (req, res) => {
-    id = req.params.id;
     try {
-      const getSingleClaim = await claimsRepository.getSingleClaim("SELECT * FROM claims WHERE claimid = $1", [id]);
+      const getSingleClaim = await claimsRepository.getSingleClaim(req.params.id);
       res.send(getSingleClaim).status(200);
       
       console.info({
@@ -83,7 +108,5 @@ claimsRouter.get(
     }
   }
 );
-
-
 
 module.exports = claimsRouter;
