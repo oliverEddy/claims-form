@@ -11,19 +11,7 @@ claimsRouter.post(
   "/",
   // jwtCheck,
   async (req, res) => {
-     const {
-        policyNumber,
-        customerIdNumber,
-        condition,
-        firstSymptoms,
-        symptomDetails,
-        serviceType,
-        providerFacility,
-        alternativeHealthInsurance,
-        consentStatement,
-      } = req.body;
-
-    
+     
     try {
       const newForm = await claimsRepository.createClaim(req.body);
       res.status(201).send(newForm.rows[0]);
