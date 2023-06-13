@@ -76,6 +76,10 @@ textarea {
   width: 100%;
 }
 
+.error {
+  color: red;
+}
+
 /* Media query for desktop */
 @media screen and (min-width: 55rem) {
   label {
