@@ -1,4 +1,4 @@
-const db = require("../db");
+import db from("../db");
 
 module.exports = {
   createClaim: async () => {

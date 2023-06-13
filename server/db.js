@@ -21,7 +21,8 @@
 // module.exports = pool;
 
 
-const { Pool } = require('pg');
+import pg from "pg";
+const { Pool } = pg;
 
 const pool = new Pool({
     host: "db",
@@ -34,7 +35,7 @@ const pool = new Pool({
     connectionTimeoutMillis: 2000,
   });  
 
-module.exports = {
+exports = {
   query: (text, params, callback) => {
     return pool.query(text, params, callback);
   },
@@ -42,3 +43,5 @@ module.exports = {
     pool.end();
   },
 };
+
+export default pool;
