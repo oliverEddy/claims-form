@@ -41,8 +41,8 @@ p {
 
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-top: 0.8rem;
-  margin-bottom: 1.2rem;
+
+  padding-bottom: 0.5rem;
 }
 
 .select-statement {
@@ -50,7 +50,7 @@ p {
   justify-content: center;
   align-items: center;
   color: white;
-  background-color: #f43300;
+  background-color: #c91500;
   border-radius: 1rem;
   border: #000000;
   margin: 0.5rem auto;
@@ -58,6 +58,7 @@ p {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   font-weight: bold;
+  margin-bottom: 1.2rem;
 }
 
 input {
@@ -85,7 +86,7 @@ input {
 
 .consent-statement {
   color: #595857;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   margin-top: 0.8rem;
 }
 
@@ -94,7 +95,7 @@ input {
   justify-content: center;
   align-items: center;
   color: white;
-  background-color: #f43300;
+  background-color: #c91500;
   border-radius: 1rem;
   border: #f43300;
   margin: 0.5rem auto;
