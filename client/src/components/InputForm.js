@@ -55,14 +55,15 @@ const InputForm = () => {
     <>
       <h1 className="heading">Claims Form</h1>
       <div className="form-container">
-        <form>
+        <form className="grid-container">
           {/* create a form that has label and input fields for policyNumber, customerIdNumber, condition, firstSymptoms, symptomDetails, serviceType, providerFacility, alternativeHealthInsurance, consentStatement, calimsStatus*/}
 
-          <div className="form-group">
-            <label htmlFor="policyNumber">Policy Number:</label>
+          <div className="grid-item">
+            <label className="label" htmlFor="policyNumber">
+              Policy Number:
+            </label>
             <input
               type="text"
-              className="form-control"
               id="policyNumber"
               placeholder="00000000"
               value={policyNumber}
@@ -71,11 +72,12 @@ const InputForm = () => {
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="customerIdNumber">Customer ID Number:</label>
+          <div className="grid-item">
+            <label className="label" htmlFor="customerIdNumber">
+              Customer ID Number:
+            </label>
             <input
               type="text"
-              className="form-control"
               id="customerIdNumber"
               placeholder="Enter customer ID number"
               onChange={(e) => setCustomerIdNumber(e.target.value)}
@@ -83,11 +85,12 @@ const InputForm = () => {
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="condition">Condition:</label>
+          <div className="grid-item">
+            <label className="label" htmlFor="condition">
+              Condition:
+            </label>
             <input
               type="text"
-              className="form-control"
               id="condition"
               placeholder="eg. Fracture"
               onChange={(e) => setCondition(e.target.value)}
@@ -95,10 +98,11 @@ const InputForm = () => {
             />
           </div>
 
-          <div>
-            <label htmlFor="description" className="form-name">
+          <div className="grid-item">
+            <label className="label" htmlFor="description">
               Date of First Symptoms:
             </label>
+
             <DatePicker
               className="form-input date-picker"
               maxDate={new Date()}
@@ -110,11 +114,13 @@ const InputForm = () => {
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="firstSymptoms">Symptom details:</label>
+          <div className="grid-item">
+            <label className="label" htmlFor="firstSymptoms">
+              Symptom details:
+            </label>
             <textarea
+              className="textarea"
               type="text"
-              className="form-control"
               id="firstSymptoms"
               placeholder="e.g. unable to bear weight"
               onChange={(e) => setSymptomDetails(e.target.value)}
@@ -122,11 +128,12 @@ const InputForm = () => {
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="serviceType">Type of Medical Service:</label>
+          <div className="grid-item">
+            <label className="label" htmlFor="serviceType">
+              Type of Medical Service:
+            </label>
             <input
               type="text"
-              className="form-control"
               id="serviceType"
               placeholder="e.g. x-ray"
               onChange={(e) => setServiceType(e.target.value)}
@@ -134,11 +141,12 @@ const InputForm = () => {
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="providerFacility">Provider Facility:</label>
+          <div className="grid-item">
+            <label className="label" htmlFor="providerFacility">
+              Provider Facility:
+            </label>
             <input
               type="text"
-              className="form-control"
               id="providerFacility"
               placeholder="e.g. Pacific Radiology, Grey Lynn"
               onChange={(e) => setProviderFacility(e.target.value)}
@@ -146,13 +154,16 @@ const InputForm = () => {
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="alternativeHealthInsurance">
+          <div>
+            <label
+              className="label-statement"
+              htmlFor="alternativeHealthInsurance"
+            >
               Do you have a policy with another health provider that you can
               make this claim with?
             </label>
             <select
-              className="form-input"
+              className="select-statement"
               name="alternativeHealthInsurance"
               required
               onChange={(event) => {
@@ -165,8 +176,8 @@ const InputForm = () => {
             </select>
           </div>
 
-          <div className="form-group">
-            <label htmlFor="consentStatement">
+          <div>
+            <label className="label-statement" htmlFor="consentStatement">
               Consent Statement:{" "}
               <div className="consent-statement">
                 "As part of an insurance claim with enSURE, I consent and give
@@ -182,7 +193,7 @@ const InputForm = () => {
               </div>
             </label>
             <select
-              className="form-input"
+              className="select-statement"
               name="consentStatement"
               required
               onChange={(event) => {
