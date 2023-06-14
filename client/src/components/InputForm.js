@@ -154,7 +154,7 @@ const InputForm = () => {
             />
           </div>
 
-          <div className="grid-item">
+          <div>
             <label
               className="label-statement"
               htmlFor="alternativeHealthInsurance"
@@ -176,7 +176,7 @@ const InputForm = () => {
             </select>
           </div>
 
-          <div className="grid-item">
+          <div>
             <label className="label-statement" htmlFor="consentStatement">
               Consent Statement:{" "}
               <div className="consent-statement">
