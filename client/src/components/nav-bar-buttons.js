@@ -4,7 +4,7 @@ import { LoginButton } from "../components/buttons/login-button";
 import { LogoutButton } from "../components/buttons/logout-button";
 
 export const NavBarButtons = () => {
-  const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated } = useAuth0();
 
   return (
     <div className="nav-bar__buttons">

@@ -5,13 +5,14 @@ import { formatDate } from "../utils/formatDate";
 import {useAuth0} from "@auth0/auth0-react";
 
 function Claim() {
+  const { id } = useParams();
   const [claims, setClaims] = useState({});
-  const [claimant, setClaimant] = useState({});
+  // const [claimant, setClaimant] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isNotFound, setIsNotFound] = useState(false);
 
 
-  const {getAccessTokenSilently, user} = useAuth0();
+  const {getAccessTokenSilently} = useAuth0();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,12 +35,11 @@ function Claim() {
 
       const data = await response.json();
 
-      console.log(data);
       setClaims(data);
       setIsLoading(false);
     };
     fetchData();
-  }, [getAccessTokenSilently]);
+  }, [getAccessTokenSilently, id]);
 
   if (isNotFound) {
     return (
@@ -55,10 +55,6 @@ function Claim() {
   if (isLoading) {
     return <p>Loading...</p>;
   }
-
-  console.log(claims);
-  console.log(user)
-
 
   return (
     <>
