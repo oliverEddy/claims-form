@@ -1,6 +1,6 @@
 const express = require("express");
 const pool = require("../db");
-// const { auth } = require('express-oauth2-jwt-bearer');
+
 const claimsRouter = express.Router();
 const claimsRepository = require("./claims.repository");
 
@@ -9,7 +9,6 @@ const claimsRepository = require("./claims.repository");
 
 claimsRouter.post(
   "/",
-  // jwtCheck,
   async (req, res) => {
      
     try {
@@ -32,7 +31,6 @@ claimsRouter.post(
 
 claimsRouter.get(
   "/",
-  // jwtCheck,
   async (req, res) => {
     try {
       const getAllClaims = await claimsRepository.getAllClaims();
@@ -79,7 +77,6 @@ claimsRouter.get(
 
 claimsRouter.get(
   "/:id",
-  // jwtCheck,
   async (req, res) => {
     try {
       const getSingleClaim = await claimsRepository.getSingleClaim(req.params.id);
