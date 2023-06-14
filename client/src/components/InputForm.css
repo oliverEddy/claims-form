@@ -36,12 +36,9 @@ p {
   display: flex;
   justify-content: center;
   text-align: center;
-
   display: inline-block;
-
   overflow: hidden;
   text-overflow: ellipsis;
-
   padding-bottom: 0.5rem;
 }
 
@@ -117,7 +114,6 @@ input {
 }
 
 /* Media query for desktop */
-/* Media query for desktop */
 @media screen and (min-width: 55rem) {
   .form-container {
     width: 100%;
@@ -143,7 +139,6 @@ input {
   .grid-item textarea,
   .grid-item select {
     width: 100%;
-    /* flex-basis: 50%;  Adjust the flex-basis value as needed */
   }
 
   .grid-item .date-picker {
