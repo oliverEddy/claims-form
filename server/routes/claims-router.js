@@ -1,11 +1,10 @@
 const express = require("express");
 const pool = require("../db");
 // const { auth } = require('express-oauth2-jwt-bearer');
-const Router = express.Router();
-const cors = require("cors");
+const claimsRouter = express.Router();
+
 const claimsRepository = require("./claims.repository");
 
-claimsRouter.use(cors());
 
 claimsRouter.post(
   "/",
@@ -25,7 +24,7 @@ claimsRouter.post(
 
     try {
       const newForm = await claimsRepository.createClaim(req.body);
-      res.status(201).send(newForm.rows[0]);
+      res.status(201).send(newForm);
       console.info({
         datetime: new Date(),
         event: `${req.method} /claims`,
@@ -58,16 +57,13 @@ claimsRouter.get(
   }
 );
 
+
 claimsRouter.get(
   "/:id",
   // jwtCheck,
   async (req, res) => {
-    id = req.params.id;
     try {
-      const getSingleClaim = await claimsRepository.getSingleClaim(
-        "SELECT * FROM claims WHERE claimid = $1",
-        [id]
-      );
+      const getSingleClaim = await claimsRepository.getSingleClaim(req.params.id);
       res.send(getSingleClaim).status(200);
 
       console.info({
