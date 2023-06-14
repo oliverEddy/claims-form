@@ -5,7 +5,7 @@
   display: grid;
   grid-template-columns: 1.3fr 2fr 1.5fr;
   /* align-self: flex-end; */
-  position: absolute;
+  position: relative;
   bottom: 0;
 }
 
@@ -15,7 +15,7 @@
   margin: 1rem;
   margin-top: 0;
   color: black;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   font-weight: bold;
 }
 
@@ -42,7 +42,11 @@ a:link {
 
 /*  Media query for tablet  */
 @media screen and (min-width: 30rem) {
-  .footerItem {
+  .footer {
+    bottom: 0;
+  }
+  
+    .footerItem {
     font-size: 1rem;
   }
 }
