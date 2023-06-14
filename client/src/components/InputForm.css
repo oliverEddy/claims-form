@@ -10,11 +10,11 @@ h1.heading {
   font-size: 1.5rem;
   color: #444444;
   font-family: "Fira Sans", sans-serif;
-  font-weight: 700; /* Set the heading font weight to 700 (bold) */
+  font-weight: 700;
 }
 
 p {
-  font-weight: 300; /* Set the paragraph font weight to 300 (light) */
+  font-weight: 300;
 }
 
 .form-container {
@@ -23,7 +23,7 @@ p {
   width: 80%;
   max-width: 32rem;
   align-items: center;
-  font-weight: 300; /* Set the font weight to 300 (light) for the form container */
+  font-weight: 300;
 }
 
 .label {
@@ -117,5 +117,31 @@ input {
 }
 
 /* Media query for desktop */
+/* Media query for desktop */
 @media screen and (min-width: 55rem) {
+  .grid-container {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .grid-item {
+    display: flex;
+    align-items: center;
+  }
+
+  .grid-item .label {
+    flex-basis: 50%;
+    padding-right: 1rem;
+  }
+
+  .grid-item input,
+  .grid-item textarea,
+  .grid-item select {
+    width: 100%;
+    /* flex-basis: 50%;  Adjust the flex-basis value as needed */
+  }
+
+  .grid-item .date-picker {
+    width: 100%;
+  }
 }

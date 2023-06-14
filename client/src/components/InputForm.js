@@ -55,10 +55,10 @@ const InputForm = () => {
     <>
       <h1 className="heading">Claims Form</h1>
       <div className="form-container">
-        <form>
+        <form className="grid-container">
           {/* create a form that has label and input fields for policyNumber, customerIdNumber, condition, firstSymptoms, symptomDetails, serviceType, providerFacility, alternativeHealthInsurance, consentStatement, calimsStatus*/}
 
-          <div>
+          <div className="grid-item">
             <label className="label" htmlFor="policyNumber">
               Policy Number:
             </label>
@@ -72,7 +72,7 @@ const InputForm = () => {
             />
           </div>
 
-          <div>
+          <div className="grid-item">
             <label className="label" htmlFor="customerIdNumber">
               Customer ID Number:
             </label>
@@ -85,7 +85,7 @@ const InputForm = () => {
             />
           </div>
 
-          <div>
+          <div className="grid-item">
             <label className="label" htmlFor="condition">
               Condition:
             </label>
@@ -98,10 +98,11 @@ const InputForm = () => {
             />
           </div>
 
-          <div>
+          <div className="grid-item">
             <label className="label" htmlFor="description">
               Date of First Symptoms:
             </label>
+
             <DatePicker
               className="form-input date-picker"
               maxDate={new Date()}
@@ -113,7 +114,7 @@ const InputForm = () => {
             />
           </div>
 
-          <div>
+          <div className="grid-item">
             <label className="label" htmlFor="firstSymptoms">
               Symptom details:
             </label>
@@ -127,7 +128,7 @@ const InputForm = () => {
             />
           </div>
 
-          <div>
+          <div className="grid-item">
             <label className="label" htmlFor="serviceType">
               Type of Medical Service:
             </label>
@@ -140,7 +141,7 @@ const InputForm = () => {
             />
           </div>
 
-          <div>
+          <div className="grid-item">
             <label className="label" htmlFor="providerFacility">
               Provider Facility:
             </label>
@@ -153,7 +154,7 @@ const InputForm = () => {
             />
           </div>
 
-          <div>
+          <div className="grid-item">
             <label
               className="label-statement"
               htmlFor="alternativeHealthInsurance"
@@ -175,7 +176,7 @@ const InputForm = () => {
             </select>
           </div>
 
-          <div>
+          <div className="grid-item">
             <label className="label-statement" htmlFor="consentStatement">
               Consent Statement:{" "}
               <div className="consent-statement">
