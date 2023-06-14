@@ -29,8 +29,9 @@ function App() {
           <Route exact path="/claims/:id" element={<Claim />}></Route>
           <Route exact path="/claims-form" element={<InputForm />}></Route>
         </Routes>
-        <Footer />
+
       </div>
+      <Footer />
     </>
   );
 }

@@ -5,8 +5,8 @@
   display: grid;
   grid-template-columns: 1.3fr 2fr 1.5fr;
   /* align-self: flex-end; */
-  position: absolute;
-
+  position: relative;
+  bottom: 0;
 }
 
 .footerItem {
