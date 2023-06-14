@@ -20,13 +20,11 @@
 }
 
 .copyright {
-  font-size: 0.8rem;
   align-self: center;
   grid-column: 1;
 }
 
 .footer-address {
-  font-size: 0.8rem;
   grid-column: 2;
   padding-left: 1rem;
   text-align: center;
@@ -35,7 +33,6 @@
 .footer-privacy {
   grid-column: 3;
   text-align: right;
-  font-size: 0.8rem;
   align-self: center;
 }
 
