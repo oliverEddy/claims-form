@@ -11,7 +11,7 @@ function Claim() {
   const [isNotFound, setIsNotFound] = useState(false);
 
 
-  const {getAccessTokenSilently} = useAuth0();
+  const {getAccessTokenSilently, user} = useAuth0();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,6 +57,9 @@ function Claim() {
   }
 
   console.log(claims);
+  console.log(user)
+
+
   return (
     <>
       <div className="">
