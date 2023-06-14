@@ -20,7 +20,7 @@ function App() {
       {/* <div>
       <LogInButton />
     </div> */}
-      <div className="container">
+      <body className="container">
         <img className="logo-img" src={logo} alt="ensure logo" />
         <Routes>
         <Route exact path="/" element={<Homepage />} />
@@ -30,7 +30,7 @@ function App() {
           <Route exact path="/claims-form" element={<InputForm />}></Route>
         </Routes>
 
-      </div>
+      </body>
       <Footer />
     </>
   );
