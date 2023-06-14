@@ -1,11 +1,9 @@
 // require("dotenv").config();
 import express from "express";
 const app = express();
-const cors = require("cors");
-const claimsRouter = require("./routes/claims-router");
-const claimantRouter = require("./routes/claimant-router");
-
-
+import cors from "cors";
+import claimsRouter from "./routes/claims-router.js";
+import claimantRouter from "./routes/claimant-router.js";
 
 
 //middleware

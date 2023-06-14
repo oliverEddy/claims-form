@@ -47,3 +47,5 @@ claimantRouter.get(
     }
   }
 );
+
+export default claimantRouter;

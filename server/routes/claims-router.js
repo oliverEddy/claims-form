@@ -1,9 +1,9 @@
 import express from "express";
 import pool from "../db.js";
-const fetch = require("node-fetch");
+import fetch from "node-fetch";
 // const { auth } = require('express-oauth2-jwt-bearer');
 const claimsRouter = express.Router();
-const claimsRepository = require("./claims.repository");
+import claimsRepository from "./claims.repository.js";
 
 
 claimsRouter.post(
@@ -20,15 +20,21 @@ claimsRouter.post(
       providerFacility,
       alternativeHealthInsurance,
       consentStatement,
+      captchaValue
     } = req.body;
 
     try {
       const newForm = await claimsRepository.createClaim(req.body);
+      const response = await fetch(
+        `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captchaValue}`,
+        { method: "post" }
+      );
+      console.log(await response.json());
       res.status(201).send(newForm);
       console.info({
         datetime: new Date(),
         event: `${req.method} /claims`,
-        claimId: newForm.rows[0].claimid,
+        claimId: newForm.rows.claimid,
       });
     } catch (err) {
       err.status = 400;
@@ -78,4 +84,4 @@ claimsRouter.get(
   }
 );
 
-module.exports = claimsRouter;
+export default claimsRouter;
