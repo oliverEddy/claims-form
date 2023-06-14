@@ -26,7 +26,7 @@ claimsRouter.post(
     
     try {
       const newForm = await claimsRepository.createClaim(req.body);
-      res.status(201).send(newForm.rows[0]);
+      res.status(201).send(newForm);
       console.info({
           datetime: new Date(),
           event: `${req.method} /claims`,
