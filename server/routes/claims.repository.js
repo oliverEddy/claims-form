@@ -1,8 +1,20 @@
 import db from("../db");
 
 module.exports = {
-  createClaim: async () => {
+  createClaim: async (claim) => {
+  const {
+      policyNumber,
+      customerIdNumber,
+      condition,
+      firstSymptoms,
+      symptomDetails,
+      serviceType,
+      providerFacility,
+      alternativeHealthInsurance,
+      consentStatement,
+    } = claim;
     try {
+
       const newClaim = await db.query("INSERT INTO claims (policyNumber, customerIdNumber, condition, firstSymptoms, symptomDetails, serviceType, providerFacility, alternativeHealthInsurance, consentStatement) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *",
       [
         policyNumber,
@@ -18,7 +30,7 @@ module.exports = {
 
       
 
-      return claim.rows;
+      return newClaim.rows;
     } catch (err) {
       throw new Error(err);
     }

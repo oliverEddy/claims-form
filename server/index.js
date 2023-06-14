@@ -1,15 +1,19 @@
 // require("dotenv").config();
 import express from "express";
 const app = express();
-import cors from "cors";
-// const formRouter = require("./routes/form-router");
-import claimsRouter from "./routes/claims-router";
+const cors = require("cors");
+const claimsRouter = require("./routes/claims-router");
+const claimantRouter = require("./routes/claimant-router");
+
+
+
 
 //middleware
 app.use(cors());
 app.use(express.json());
 
 app.use("/api/claims", claimsRouter);
+// app.use("/api/claimants", claimantRouter);
 
 app.use("/test", (req, res) => {
   res.json("Hello World");
