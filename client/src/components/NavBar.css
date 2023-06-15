@@ -4,7 +4,6 @@
 
 body {
   margin: 0;
-  position: relative;
 }
 
 .nav {
@@ -15,11 +14,12 @@ body {
   align-items: center;
   gap: 2rem;
   padding: 0 1rem;
+  width: 100%;
 }
 
 .nav ul {
   padding: 0;
-  margin: 0;
+  margin: 1.2rem;
   list-style: none;
   display: flex;
   gap: 2rem;
