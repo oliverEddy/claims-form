@@ -1,8 +1,8 @@
-const express = require("express");
-const pool = require("../db");
+import express from "express";
+import pool from "../db.js";
 // const { auth } = require('express-oauth2-jwt-bearer');
 const claimantRouter = express.Router();
-const claimantRepository = require("./claims.repository");
+import claimantRepository from "./claims.repository.js";
 
 
 
@@ -47,3 +47,5 @@ claimantRouter.get(
     }
   }
 );
+
+export default claimantRouter;

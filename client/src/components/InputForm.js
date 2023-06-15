@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./InputForm.css";
-import {useAuth0} from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const InputForm = () => {
   const [policyNumber, setPolicyNumber] = useState("");
@@ -15,7 +16,10 @@ const InputForm = () => {
   const [alternativeHealthInsurance, setAlternativeHealthInsurance] =
     useState("");
   const [consentStatement, setConsentStatement] = useState("");
-  const {getAccessTokenSilently} = useAuth0();
+  const { getAccessTokenSilently } = useAuth0();
+  const [captchaValue, setCaptchaValue] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [errorSubmitMessage, setErrorSubmitMessage] = "";
 
   const description = {
     policyNumber: policyNumber,
@@ -27,25 +31,41 @@ const InputForm = () => {
     providerFacility: providerFacility,
     alternativeHealthInsurance: alternativeHealthInsurance,
     consentStatement: consentStatement,
+    captchaValue: captchaValue,
+  };
+
+  const onChange = (value) => {
+    console.log("Captcha value:", value);
+    setCaptchaValue(value);
   };
 
   const onSubmit = async (e) => {
     const accessToken = await getAccessTokenSilently();
     e.preventDefault();
     try {
-      await fetch(
-        `${process.env.REACT_APP_API_URL}/claims`,
-        {
+      if (captchaValue) {
+        // const body = { policyNumber, customerIdNumber, condition, firstSymptoms, symptomDetails, serviceType, providerFacility, alternativeHealthInsurance, consentStatement}
+        const response = await fetch("http://localhost:5001/api/claims", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`
+            Authorization: `Bearer ${accessToken}`,
           },
-
+          // Authorization: `Bearer ${accessToken}`
           body: JSON.stringify(description),
-        },
-        [getAccessTokenSilently]
-      );
+        });
+        const status = await response.status;
+        if (status === 201) {
+          //reloads the page after submission
+          window.location = "/";
+        } else {
+          setErrorSubmitMessage(
+            "An error has happened while adding a new item.  Please try again"
+          );
+        }
+      } else {
+        setErrorMessage("Missing I am a robot verification");
+      }
     } catch (err) {
       console.error(err.message);
     }
@@ -56,6 +76,11 @@ const InputForm = () => {
       <h1 className="heading">Claims Form</h1>
       <div className="form-container">
         <form className="grid-container">
+          {errorSubmitMessage && (
+            <div className="error">
+              <p>{errorSubmitMessage}</p>
+            </div>
+          )}
           {/* create a form that has label and input fields for policyNumber, customerIdNumber, condition, firstSymptoms, symptomDetails, serviceType, providerFacility, alternativeHealthInsurance, consentStatement, calimsStatus*/}
 
           <div className="grid-item">
@@ -204,6 +229,21 @@ const InputForm = () => {
               <option value="True">Yes</option>
               <option value="False">No</option>
             </select>
+          </div>
+
+          {errorMessage && (
+            <div className="error">
+              <p>{errorMessage}</p>
+            </div>
+          )}
+          <div className="recaptcha-div">
+            <ReCAPTCHA
+              // for some reason the below syntax will not render the captcha - sitekey has no value - why????
+              sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+              // sitekey="6Lf-6ZAmAAAAAIFH99ANlm4hAFlXplLEXMWttOsI"
+              onChange={onChange}
+              className="g-recaptcha"
+            />
           </div>
         </form>
         <button className="btn btn-success" onClick={onSubmit}>

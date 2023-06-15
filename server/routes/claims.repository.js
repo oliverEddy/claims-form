@@ -1,8 +1,8 @@
-const db = require("../db");
+import db from "../db.js";
 
-module.exports = {
+const claimsRepository = {
   createClaim: async (claim) => {
-  const {
+    const {
       policyNumber,
       customerIdNumber,
       condition,
@@ -14,21 +14,20 @@ module.exports = {
       consentStatement,
     } = claim;
     try {
-
-      const newClaim = await db.query("INSERT INTO claims (policyNumber, customerIdNumber, condition, firstSymptoms, symptomDetails, serviceType, providerFacility, alternativeHealthInsurance, consentStatement) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *",
-      [
-        policyNumber,
-        customerIdNumber,
-        condition,
-        firstSymptoms,
-        symptomDetails,
-        serviceType,
-        providerFacility,
-        alternativeHealthInsurance,
-        consentStatement,
-      ]);
-
-      
+      const newClaim = await db.query(
+        "INSERT INTO claims (policyNumber, customerIdNumber, condition, firstSymptoms, symptomDetails, serviceType, providerFacility, alternativeHealthInsurance, consentStatement) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *",
+        [
+          policyNumber,
+          customerIdNumber,
+          condition,
+          firstSymptoms,
+          symptomDetails,
+          serviceType,
+          providerFacility,
+          alternativeHealthInsurance,
+          consentStatement,
+        ]
+      );
 
       return newClaim.rows;
     } catch (err) {
@@ -64,5 +63,7 @@ module.exports = {
     } catch (err) {
       throw new Error(err);
     }
-  }
+  },
 };
+
+export default claimsRepository;

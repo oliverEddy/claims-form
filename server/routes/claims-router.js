@@ -1,8 +1,9 @@
-const express = require("express");
-const pool = require("../db");
-const { claimCheck } = require('express-oauth2-jwt-bearer');
+import express from "express";
+import pool from "../db.js";
+import { claimCheck } from 'express-oauth2-jwt-bearer';
 const claimsRouter = express.Router();
-const claimsRepository = require("./claims.repository");
+import claimsRepository from "./claims.repository.js";
+import recaptchaVerification from "../helpers/recaptchaVerification.js";
 
 const checkClaims = (permissions) => {
   return claimCheck((claims) => {
@@ -25,16 +26,22 @@ claimsRouter.post(
       providerFacility,
       alternativeHealthInsurance,
       consentStatement,
+      captchaValue,
     } = req.body;
 
     try {
       const newForm = await claimsRepository.createClaim(req.body);
-      res.status(201).send(newForm);
-      console.info({
-        datetime: new Date(),
-        event: `${req.method} /claims`,
-        claimId: newForm.rows[0].claimid,
-      });
+      const check = await recaptchaVerification(captchaValue);
+      if (check.success) {
+        res.status(201).send(newForm);
+        console.info({
+          datetime: new Date(),
+          event: `${req.method} /claims`,
+          claimId: newForm.rows.claimid,
+        });
+      } else {
+        res.status(500).json({message: "error with recaptcha verification"})
+      }
     } catch (err) {
       err.status = 400;
       err.message = "You have entered incorrect details";
@@ -129,4 +136,4 @@ claimsRouter.get(
   }
 );
 
-module.exports = claimsRouter;
+export default claimsRouter;

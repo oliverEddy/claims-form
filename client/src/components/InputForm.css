@@ -111,6 +111,24 @@ input {
   box-shadow: 0 0 0 4px #444444;
 }
 
+textarea {
+  font-size: 0.7rem;
+  font-family: Fira Sans;
+  width: 100%;
+}
+
+.error {
+  color: red;
+}
+
+.g-recaptcha {
+  display: inline-block;
+} 
+
+.recaptcha-div {
+  text-align: center;
+}  
+
 /* Media query for desktop */
 @media screen and (min-width: 55rem) {
   .form-container {

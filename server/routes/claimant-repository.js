@@ -1,6 +1,6 @@
-const db = require("../db");
+import db from "../db.js";
 
-module.exports = {
+const claimantRepository = {
   getSingleClaimant: async (id) => {
     try {
       const claim = await db.query(
@@ -32,3 +32,5 @@ module.exports = {
     }
   },
 };
+
+export default claimantRepository;
