@@ -12,12 +12,17 @@ import Privacy from "./components/Privacy";
 import Homepage from "./components/Homepage";
 import Claims from "./components/Claims";
 import Claim from "./components/Claim";
+
+import Navbar from "./components/NavBar";
+
 import { NavBarButtons } from "./components/nav-bar-buttons";
 import { AuthenticationGuard } from "./components/authentication-guard";
+
 
 function App() {
   return (
     <>
+
       <body>
       <div className="container">
         <div className="header">
@@ -37,6 +42,7 @@ function App() {
           <Route path="/claims-form" element={<AuthenticationGuard component={InputForm} />} />
         </Routes>
       </div>
+
       </body>
       <div className="footer-div">
         <Footer />
