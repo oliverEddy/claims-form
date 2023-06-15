@@ -55,7 +55,7 @@ const InputForm = () => {
           body: JSON.stringify(description),
         });
         const status = await response.status;
-        if (status === 200) {
+        if (status === 201) {
           //reloads the page after submission
           window.location = "/";
         } else {
