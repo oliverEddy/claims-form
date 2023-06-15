@@ -3,7 +3,6 @@ const pool = require("../db");
 const { claimCheck } = require('express-oauth2-jwt-bearer');
 
 const claimsRouter = express.Router();
-const claimsRepository = require("./claims.repository");
 
 
 const checkClaims = (permissions) => {
@@ -12,27 +11,38 @@ const checkClaims = (permissions) => {
 })
 }
 
+
 claimsRouter.post(
   "/",
   async (req, res) => {
-     
+
+    const {
+      policyNumber,
+      customerIdNumber,
+      condition,
+      firstSymptoms,
+      symptomDetails,
+      serviceType,
+      providerFacility,
+      alternativeHealthInsurance,
+      consentStatement,
+    } = req.body;
+
     try {
       const newForm = await claimsRepository.createClaim(req.body);
-      res.status(201).send(newForm.rows[0]);
+      res.status(201).send(newForm);
       console.info({
-          datetime: new Date(),
-          event: `${req.method} /claims`,
-          claimId: newForm.rows[0].claimid,
-        });
+        datetime: new Date(),
+        event: `${req.method} /claims`,
+        claimId: newForm.rows[0].claimid,
+      });
     } catch (err) {
-        err.status = 400;
-        err.message = "You have entered incorrect details";
+      err.status = 400;
+      err.message = "You have entered incorrect details";
       //   alert(err.message);
     }
   }
 );
-
-
 
 claimsRouter.get(
   "/", checkClaims("read:claims"),
@@ -42,16 +52,17 @@ claimsRouter.get(
       res.send(getAllClaims).status(200);
       console.log(req.payload.auth.sub)
       console.info({
-          datetime: new Date(),
-          event: `${req.method} /claims`,
-        });
+        datetime: new Date(),
+        event: `${req.method} /claims`,
+      });
     } catch (err) {
-        err.status = 404;
-        err.message = "You have entered incorrect details";
+      err.status = 404;
+      err.message = "You have entered incorrect details";
       //   alert(err.message);
     }
   }
 );
+
 
 
 claimsRouter.get(
@@ -76,26 +87,44 @@ claimsRouter.get(
 
 
 
-
-
-
-
-
 claimsRouter.get(
   "/:id", checkClaims("read:claims"),
+
   async (req, res) => {
     try {
       const getSingleClaim = await claimsRepository.getSingleClaim(req.params.id);
       console.log(req.auth.payload)
       res.send(getSingleClaim).status(200);
-      
+
       console.info({
-          datetime: new Date(),
-          event: `${req.method} /claims/:id`,
-        });
+        datetime: new Date(),
+        event: `${req.method} /claims/:id`,
+      });
     } catch (err) {
-        err.status = 404;
-        err.message = "You have entered incorrect details";
+      err.status = 404;
+      err.message = "You have entered incorrect details";
+      //   alert(err.message);
+    }
+  }
+);
+
+
+claimsRouter.get(
+  "/all/:id",
+
+  async (req, res) => {
+    try {
+      const getSingleClaim = await claimsRepository.getSingleClaim(req.params.id);
+      console.log(req.auth.payload)
+      res.send(getSingleClaim).status(200);
+
+      console.info({
+        datetime: new Date(),
+        event: `${req.method} /claims/:id`,
+      });
+    } catch (err) {
+      err.status = 404;
+      err.message = "You have entered incorrect details";
       //   alert(err.message);
     }
   }

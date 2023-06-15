@@ -18,11 +18,13 @@ import { AuthenticationGuard } from "./components/authentication-guard";
 function App() {
   return (
     <>
+
       <div className="container">
         <div className="header">
           <NavBarButtons />
           <img className="logo-img" src={logo} alt="ensure logo" />
         </div>
+
         <Routes>
           <Route exact path="/" element={<Homepage />} />
 
@@ -38,6 +40,7 @@ function App() {
       <div className="footer">
         <Footer />
       </div>
+
     </>
   );
 }

@@ -1,13 +1,12 @@
 const db = require("../db");
 
-
 module.exports = {
-
   getSingleClaimant: async (id) => {
     try {
-      const claim = await db.query("SELECT * FROM claims WHERE customerIdNumber = $1", [
-        id,
-      ]);
+      const claim = await db.query(
+        "SELECT * FROM claims WHERE customerIdNumber = $1",
+        [id]
+      );
 
       if (claim.rows.length === 0) {
         throw new Error("No customer with that id");
@@ -19,7 +18,7 @@ module.exports = {
     }
   },
 
-  getAllClaimsants: async () => {
+  getAllClaimants: async () => {
     try {
       const claims = await db.query("SELECT * FROM claims");
 
@@ -31,6 +30,5 @@ module.exports = {
     } catch (err) {
       throw new Error(err);
     }
-  }
-
+  },
 };
