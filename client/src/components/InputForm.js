@@ -3,7 +3,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./InputForm.css";
-import {useAuth0} from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const InputForm = () => {
   const [policyNumber, setPolicyNumber] = useState("");
@@ -16,7 +16,7 @@ const InputForm = () => {
   const [alternativeHealthInsurance, setAlternativeHealthInsurance] =
     useState("");
   const [consentStatement, setConsentStatement] = useState("");
-  const {getAccessTokenSilently} = useAuth0();
+  const { getAccessTokenSilently } = useAuth0();
   const [captchaValue, setCaptchaValue] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [errorSubmitMessage, setErrorSubmitMessage] = "";
@@ -49,7 +49,7 @@ const InputForm = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`
+            Authorization: `Bearer ${accessToken}`,
           },
           // Authorization: `Bearer ${accessToken}`
           body: JSON.stringify(description),
@@ -239,8 +239,8 @@ const InputForm = () => {
           <div className="recaptcha-div">
             <ReCAPTCHA
               // for some reason the below syntax will not render the captcha - sitekey has no value - why????
-              // sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
-              sitekey="6Lf-6ZAmAAAAAIFH99ANlm4hAFlXplLEXMWttOsI"
+              sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+              // sitekey="6Lf-6ZAmAAAAAIFH99ANlm4hAFlXplLEXMWttOsI"
               onChange={onChange}
               className="g-recaptcha"
             />
