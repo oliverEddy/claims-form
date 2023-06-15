@@ -13,10 +13,10 @@ import Homepage from "./components/Homepage";
 import Claims from "./components/Claims";
 import Claim from "./components/Claim";
 
-import Navbar from "./components/NavBar";
 
 import { NavBarButtons } from "./components/nav-bar-buttons";
 import { AuthenticationGuard } from "./components/authentication-guard";
+import Navbar from "./components/NavBar";
 
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
       <body>
       <div className="container">
         <div className="header">
-          <NavBarButtons />
+          <Navbar />
           <img className="logo-img" src={logo} alt="ensure logo" />
         </div>
 
