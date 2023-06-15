@@ -34,7 +34,7 @@ const InputForm = () => {
     e.preventDefault();
     try {
       await fetch(
-        `REACT_APP_API_SERVER_URL/claims`,
+        `${process.env.REACT_APP_API_URL}/claims`,
         {
           method: "POST",
           headers: {
