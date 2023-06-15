@@ -1,9 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-
 import "./App.css";
 import logo from "./client-img/ensure-logo.svg";
-// import LogInButton from "./components/LogInButton";
+
 
 //components
 
@@ -13,25 +12,35 @@ import Privacy from "./components/Privacy";
 import Homepage from "./components/Homepage";
 import Claims from "./components/Claims";
 import Claim from "./components/Claim";
+import { NavBarButtons } from "./components/nav-bar-buttons";
+import { AuthenticationGuard } from "./components/authentication-guard";
 
 function App() {
   return (
     <>
-      {/* <div>
-      <LogInButton />
-    </div> */}
-      <body className="container">
-        <img className="logo-img" src={logo} alt="ensure logo" />
-        <Routes>
-        <Route exact path="/" element={<Homepage />} />
-          <Route exact path="/privacy-policy" element={<Privacy />}></Route>
-          <Route exact path="/claims" element={<Claims />}></Route>
-          <Route exact path="/claims/:id" element={<Claim />}></Route>
-          <Route exact path="/claims-form" element={<InputForm />}></Route>
-        </Routes>
 
-      </body>
-      <Footer />
+      <div className="container">
+        <div className="header">
+          <NavBarButtons />
+          <img className="logo-img" src={logo} alt="ensure logo" />
+        </div>
+
+        <Routes>
+          <Route exact path="/" element={<Homepage />} />
+
+          <Route exact path="/privacy-policy" element={<Privacy />}></Route>
+
+          <Route path="/claims" element={<AuthenticationGuard component={Claims} /> } />
+          
+          <Route path="/claims/:id" element={<AuthenticationGuard component={Claim} /> } />
+
+          <Route path="/claims-form" element={<AuthenticationGuard component={InputForm} />} />
+        </Routes>
+      </div>
+      <div className="footer">
+        <Footer />
+      </div>
+
     </>
   );
 }

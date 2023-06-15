@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./Claim.css"
 import { formatDate } from "../utils/formatDate";
+import {useAuth0} from "@auth0/auth0-react";
 
 
 function Claim() {
@@ -11,15 +12,20 @@ function Claim() {
   const [isLoading, setIsLoading] = useState(true);
   const [isNotFound, setIsNotFound] = useState(false);
 
-
+  const {getAccessTokenSilently} = useAuth0();
 
 
   useEffect(() => {
     const fetchData = async () => {
-      // const response = await fetch(`${process.env.REACT_APP_API_URL}/claims/${id}`);
-      const response = await fetch(`http://localhost:5001/api/claims/${id}`);
-
-      // const claimantResponse = await fetch(`http://localhost:5001/api/claimants/${id}`);
+      const accessToken = await getAccessTokenSilently();
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/claims/${id}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`
+        },
+      },
+      );
 
       if (response.ok === false) {
         setIsNotFound(true);
@@ -34,7 +40,7 @@ function Claim() {
       setIsLoading(false);
     };
     fetchData();
-  }, [id]);
+  }, [getAccessTokenSilently]);
 
   if (isNotFound) {
     return (
