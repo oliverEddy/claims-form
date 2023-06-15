@@ -1,10 +1,9 @@
 import express from "express";
 import pool from "../db.js";
-import fetch from "node-fetch";
 // const { auth } = require('express-oauth2-jwt-bearer');
 const claimsRouter = express.Router();
 import claimsRepository from "./claims.repository.js";
-
+import recaptchaVerification from "../helpers/recaptchaVerification.js";
 
 claimsRouter.post(
   "/",
@@ -20,22 +19,22 @@ claimsRouter.post(
       providerFacility,
       alternativeHealthInsurance,
       consentStatement,
-      captchaValue
+      captchaValue,
     } = req.body;
 
     try {
       const newForm = await claimsRepository.createClaim(req.body);
-      const response = await fetch(
-        `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captchaValue}`,
-        { method: "post" }
-      );
-      console.log(await response.json());
-      res.status(201).send(newForm);
-      console.info({
-        datetime: new Date(),
-        event: `${req.method} /claims`,
-        claimId: newForm.rows.claimid,
-      });
+      const check = await recaptchaVerification(captchaValue);
+      if (check.success) {
+        res.status(201).send(newForm);
+        console.info({
+          datetime: new Date(),
+          event: `${req.method} /claims`,
+          claimId: newForm.rows.claimid,
+        });
+      } else {
+        res.status(500).json({message: "error with recaptcha verification"})
+      }
     } catch (err) {
       err.status = 400;
       err.message = "You have entered incorrect details";
@@ -63,13 +62,14 @@ claimsRouter.get(
   }
 );
 
-
 claimsRouter.get(
   "/:id",
   // jwtCheck,
   async (req, res) => {
     try {
-      const getSingleClaim = await claimsRepository.getSingleClaim(req.params.id);
+      const getSingleClaim = await claimsRepository.getSingleClaim(
+        req.params.id
+      );
       res.send(getSingleClaim).status(200);
 
       console.info({

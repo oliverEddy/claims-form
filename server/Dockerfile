@@ -1,5 +1,5 @@
 # Get the node 12 image
-FROM node:12
+FROM node:14
 # Create a folder called App
 WORKDIR /app
 # Copy everything apart from node modules into app folder

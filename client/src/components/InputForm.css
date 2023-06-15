@@ -121,6 +121,14 @@ textarea {
   color: red;
 }
 
+.g-recaptcha {
+  display: inline-block;
+} 
+
+.recaptcha-div {
+  text-align: center;
+}  
+
 /* Media query for desktop */
 @media screen and (min-width: 55rem) {
   .form-container {

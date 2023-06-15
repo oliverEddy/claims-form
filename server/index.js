@@ -1,10 +1,10 @@
-// require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 const app = express();
 import cors from "cors";
 import claimsRouter from "./routes/claims-router.js";
 import claimantRouter from "./routes/claimant-router.js";
-
 
 //middleware
 app.use(cors());
@@ -16,8 +16,6 @@ app.use("/api/claims", claimsRouter);
 app.use("/test", (req, res) => {
   res.json("Hello World");
 });
-
-
 
 const thePort = process.env.EXPRESS_PORT || 5001;
 app.listen(thePort, () => {

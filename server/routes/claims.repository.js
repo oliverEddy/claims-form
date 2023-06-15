@@ -1,6 +1,6 @@
 import db from "../db.js";
 
-module.exports = {
+const claimsRepository = {
   createClaim: async (claim) => {
     const {
       policyNumber,

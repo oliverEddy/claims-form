@@ -31,7 +31,7 @@ const InputForm = () => {
     providerFacility: providerFacility,
     alternativeHealthInsurance: alternativeHealthInsurance,
     consentStatement: consentStatement,
-    captchaValue: captchaValue
+    captchaValue: captchaValue,
   };
 
   const onChange = (value) => {
@@ -75,6 +75,11 @@ const InputForm = () => {
       <h1 className="heading">Claims Form</h1>
       <div className="form-container">
         <form className="grid-container">
+          {errorSubmitMessage && (
+            <div className="error">
+              <p>{errorSubmitMessage}</p>
+            </div>
+          )}
           {/* create a form that has label and input fields for policyNumber, customerIdNumber, condition, firstSymptoms, symptomDetails, serviceType, providerFacility, alternativeHealthInsurance, consentStatement, calimsStatus*/}
 
           <div className="grid-item">
@@ -230,12 +235,15 @@ const InputForm = () => {
               <p>{errorMessage}</p>
             </div>
           )}
-          <ReCAPTCHA
-            // for some reason the below syntax will not render the captcha - sitekey has no value - why????
-            // sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
-            sitekey="6Lf-6ZAmAAAAAIFH99ANlm4hAFlXplLEXMWttOsI"
-            onChange={onChange}
-          />
+          <div className="recaptcha-div">
+            <ReCAPTCHA
+              // for some reason the below syntax will not render the captcha - sitekey has no value - why????
+              // sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+              sitekey="6Lf-6ZAmAAAAAIFH99ANlm4hAFlXplLEXMWttOsI"
+              onChange={onChange}
+              className="g-recaptcha"
+            />
+          </div>
         </form>
         <button className="btn btn-success" onClick={onSubmit}>
           Submit your claim
