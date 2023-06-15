@@ -18,7 +18,7 @@ import { AuthenticationGuard } from "./components/authentication-guard";
 function App() {
   return (
     <>
-
+      <body>
       <div className="container">
         <div className="header">
           <NavBarButtons />
@@ -37,7 +37,8 @@ function App() {
           <Route path="/claims-form" element={<AuthenticationGuard component={InputForm} />} />
         </Routes>
       </div>
-      <div className="footer">
+      </body>
+      <div className="footer-div">
         <Footer />
       </div>
 
