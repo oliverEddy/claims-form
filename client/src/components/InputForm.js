@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./InputForm.css";
-// import {useAuth0} from "@auth0/auth0-react";
+import {useAuth0} from "@auth0/auth0-react";
 
 const InputForm = () => {
   const [policyNumber, setPolicyNumber] = useState("");
@@ -15,7 +15,7 @@ const InputForm = () => {
   const [alternativeHealthInsurance, setAlternativeHealthInsurance] =
     useState("");
   const [consentStatement, setConsentStatement] = useState("");
-  // const {getAccessTokenSilently} = useAuth0();
+  const {getAccessTokenSilently} = useAuth0();
 
   const description = {
     policyNumber: policyNumber,
@@ -30,21 +30,21 @@ const InputForm = () => {
   };
 
   const onSubmit = async (e) => {
-    // const accessToken = await getAccessTokenSilently();
+    const accessToken = await getAccessTokenSilently();
     e.preventDefault();
     try {
       await fetch(
-        "http://localhost:5001/api/claims",
+        `${process.env.REACT_APP_API_URL}/claims`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            // Authorization: `Bearer ${accessToken}`
+            Authorization: `Bearer ${accessToken}`
           },
 
           body: JSON.stringify(description),
         },
-        []
+        [getAccessTokenSilently]
       );
     } catch (err) {
       console.error(err.message);
