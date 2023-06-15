@@ -1,6 +1,6 @@
 import express from "express";
 import pool from "../db.js";
-// const { auth } = require('express-oauth2-jwt-bearer');
+import { claimCheck } from 'express-oauth2-jwt-bearer';
 const claimsRouter = express.Router();
 import claimsRepository from "./claims.repository.js";
 import recaptchaVerification from "../helpers/recaptchaVerification.js";

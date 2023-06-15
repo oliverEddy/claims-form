@@ -5,7 +5,7 @@ const app = express();
 import cors from "cors";
 import claimsRouter from "./routes/claims-router.js";
 import claimantRouter from "./routes/claimant-router.js";
-const { auth } = require("express-oauth2-jwt-bearer");
+import { auth } from "express-oauth2-jwt-bearer";
 
 //middleware
 app.use(cors());
