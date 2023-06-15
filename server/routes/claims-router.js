@@ -1,9 +1,8 @@
 const express = require("express");
 const pool = require("../db");
 const { claimCheck } = require('express-oauth2-jwt-bearer');
-
 const claimsRouter = express.Router();
-
+const claimsRepository = require("./claims.repository");
 
 const checkClaims = (permissions) => {
   return claimCheck((claims) => {
