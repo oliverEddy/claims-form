@@ -3,7 +3,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./InputForm.css";
-// import {useAuth0} from "@auth0/auth0-react";
+import {useAuth0} from "@auth0/auth0-react";
 
 const InputForm = () => {
   const [policyNumber, setPolicyNumber] = useState("");
@@ -16,7 +16,7 @@ const InputForm = () => {
   const [alternativeHealthInsurance, setAlternativeHealthInsurance] =
     useState("");
   const [consentStatement, setConsentStatement] = useState("");
-  // const {getAccessTokenSilently} = useAuth0();
+  const {getAccessTokenSilently} = useAuth0();
   const [captchaValue, setCaptchaValue] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [errorSubmitMessage, setErrorSubmitMessage] = "";
@@ -40,8 +40,8 @@ const InputForm = () => {
   };
 
   const onSubmit = async (e) => {
-    // const accessToken = await getAccessTokenSilently();
-    // e.preventDefault();
+    const accessToken = await getAccessTokenSilently();
+    e.preventDefault();
     try {
       if (captchaValue) {
         // const body = { policyNumber, customerIdNumber, condition, firstSymptoms, symptomDetails, serviceType, providerFacility, alternativeHealthInsurance, consentStatement}
@@ -49,6 +49,7 @@ const InputForm = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`
           },
           // Authorization: `Bearer ${accessToken}`
           body: JSON.stringify(description),

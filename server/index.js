@@ -5,13 +5,27 @@ const app = express();
 import cors from "cors";
 import claimsRouter from "./routes/claims-router.js";
 import claimantRouter from "./routes/claimant-router.js";
+const cors = require("cors");
+const { auth } = require('express-oauth2-jwt-bearer');
+const claimsRouter = require("./routes/claims-router");
+const claimantRouter = require("./routes/claimant-router");
 
 //middleware
 app.use(cors());
 app.use(express.json());
 
+
+const checkJwt = auth({
+  audience: 'https://ensure-api.com',
+  issuerBaseURL: 'https://dev-8a2dkllk1a5kywvs.us.auth0.com/',
+  tokenSigningAlg: 'RS256'
+});
+
+
+
+app.use(checkJwt)
+
 app.use("/api/claims", claimsRouter);
-// app.use("/api/claimants", claimantRouter);
 
 app.use("/test", (req, res) => {
   res.json("Hello World");

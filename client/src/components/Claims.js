@@ -2,21 +2,32 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./Claims.css";
 import { formatDate } from "../utils/formatDate";
+import {useAuth0} from "@auth0/auth0-react";
 
 function Claim() {
   const { id } = useParams();
   const [claims, setClaims] = useState({});
-  const [claimant, setClaimant] = useState({});
+  // const [claimant, setClaimant] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isNotFound, setIsNotFound] = useState(false);
 
+
+  const {getAccessTokenSilently} = useAuth0();
+
   useEffect(() => {
     const fetchData = async () => {
-      // const response = await fetch(`${process.env.REACT_APP_API_URL}/claims/${id}`);
-      const response = await fetch(`http://localhost:5001/api/claims`);
+      const accessToken = await getAccessTokenSilently();
 
-      // const claimantResponse = await fetch(`http://localhost:5001/api/claimants/${id}`);
-
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/claims`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`
+          },
+        },
+        )
+      
+      
       if (response.ok === false) {
         setIsNotFound(true);
         return;
@@ -24,12 +35,11 @@ function Claim() {
 
       const data = await response.json();
 
-      console.log(data);
       setClaims(data);
       setIsLoading(false);
     };
     fetchData();
-  }, [id]);
+  }, [getAccessTokenSilently, id]);
 
   if (isNotFound) {
     return (
@@ -46,7 +56,6 @@ function Claim() {
     return <p>Loading...</p>;
   }
 
-  console.log(claims);
   return (
     <>
       <div className="">
